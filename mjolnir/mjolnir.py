@@ -13,8 +13,6 @@ from redbot.core import Config, commands
 from redbot.core.bot import Red
 from redbot.core.utils.chat_formatting import pagify
 
-from mjolnir import menus
-
 log = logging.getLogger("red.kreusada.mjolnir")
 
 sayings = (
@@ -69,6 +67,8 @@ class Mjolnir(commands.Cog):
     @commands.command()
     async def liftedboard(self, ctx: commands.Context):
         """Shows the leaderboard for those who have lifted the hammer."""
+        # Move the import of menus here
+        from . import menus
         all_users = await self.config.all_users()
         board = sorted(all_users.items(), key=lambda m: m[1]["lifted"], reverse=True)
         sending = []
@@ -98,3 +98,6 @@ class Mjolnir(commands.Cog):
                 await ctx.send("Sorry, this is only for guilds!")
             return False
         return True
+
+async def setup(bot: Red):
+    await bot.add_cog(Mjolnir(bot))

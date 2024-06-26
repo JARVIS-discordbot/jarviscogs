@@ -67,8 +67,8 @@ class Mjolnir(commands.Cog):
     @commands.command()
     async def liftedboard(self, ctx: commands.Context):
         """Shows the leaderboard for those who have lifted the hammer."""
-        # Move the import of menus here
-        from . import menus
+        # Update the import statement to use an absolute import
+        from redbot.cogs.mjolnir import menus
         all_users = await self.config.all_users()
         board = sorted(all_users.items(), key=lambda m: m[1]["lifted"], reverse=True)
         sending = []

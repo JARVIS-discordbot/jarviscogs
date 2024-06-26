@@ -3,8 +3,7 @@
 # https://github.com/Just-Jojo/JojoCogs
 
 import discord
-from redbot.vendored.discord.ext import menus
-
+from . import menus
 
 class MjolnirPages(menus.ListPageSource):
     _source: menus.ListPageSource

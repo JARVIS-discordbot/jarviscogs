@@ -8,8 +8,8 @@ import discord
 from redbot.core import Config, commands
 from redbot.core.bot import Red
 from redbot.core.utils.chat_formatting import pagify
-from .mjolnir import menus  # Relative import for the Mjolnir class
-log = logging.getLogger("red.kreusada.mjolnir")
+from . import menus  # Ensure this is a relative import for the Mjolnir class
+log = logging.getLogger(__name__)
 
 sayings = (
     "The hammer is strong, but so are you. Keep at it!",
